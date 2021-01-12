@@ -16,10 +16,6 @@ services:
   - docker
 install: true
 
-stages:
-  - name: test
-  - name: deploy
-    if: branch = production AND tag = true 
 
 jobs:
   include:
@@ -29,9 +25,10 @@ jobs:
       script:
         - go test -race -coverprofile c.out ./...
         - golangci-lint run
-    - stage: deploy
-      porvider: script
-      script: 
+    - name: Dockerhub Deploy
+      if: tag IS present
+      stage: deploy
+      script:
         - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         - docker build . -t samtholiya/analyser-service:$(git describe --tags)
         - docker build . -t samtholiya/analyser-service:latest
