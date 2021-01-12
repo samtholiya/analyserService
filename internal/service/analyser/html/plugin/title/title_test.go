@@ -59,3 +59,12 @@ func TestGetPluginName(t *testing.T) {
 		t.Errorf("Plugin name should be Title found %v", processor.GetProcessorName())
 	}
 }
+
+func TestGetPluginJSON(t *testing.T) {
+	processor := &Processor{
+		Title: "Title",
+	}
+	if data, err := processor.MarshalJSON(); err != nil || string(data) != "\"Title\"" {
+		t.Errorf("MarshalJSON should return \"Title\" found: %v", string(data))
+	}
+}
