@@ -6,6 +6,9 @@ import (
 
 	"github.com/samtholiya/analyserService/internal/service/analyser/html/plugin"
 	"golang.org/x/net/html"
+
+	// Plugins for parser
+	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/title"
 )
 
 func traverse(waitGroup *sync.WaitGroup, node *html.Node, freshProcessors []plugin.ProcessorInterface) {
