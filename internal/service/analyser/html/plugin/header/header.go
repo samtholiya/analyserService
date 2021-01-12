@@ -16,7 +16,7 @@ var regex *regexp.Regexp
 func init() {
 	plugin.RegisterProcessor(name, New)
 	var err error
-	regex, err = regexp.Compile("h\\d+")
+	regex, err = regexp.Compile(`h\d+`)
 	if err != nil {
 		panic(err)
 	}
