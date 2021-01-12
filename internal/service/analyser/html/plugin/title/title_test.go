@@ -52,3 +52,10 @@ func TestTitleExecuteNegative(t *testing.T) {
 		t.Errorf("Title is not set correctly Set:%v should be: %v", processor.Title, "hello world")
 	}
 }
+
+func TestGetPluginName(t *testing.T) {
+	processor := &Processor{}
+	if processor.GetProcessorName() != "Title" {
+		t.Errorf("Plugin name should be Title found %v", processor.GetProcessorName())
+	}
+}
