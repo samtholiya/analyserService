@@ -9,6 +9,7 @@ import (
 
 	// Plugins for parser
 	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/anchor"
+	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/login"
 	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/title"
 )
 
