@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
@@ -18,8 +19,10 @@ func main() {
 		Crawler: crawl,
 	}
 	mux.HandleFunc("/api/v1/analyser/html", analyser.Post)
+	log.Println("Server is starting at port 80")
 	err := http.ListenAndServe(":80", mux)
 	if err != nil {
+		log.Println(err)
 		os.Exit(1)
 	}
 }
