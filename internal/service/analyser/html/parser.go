@@ -9,9 +9,9 @@ import (
 
 	// Plugins for parser
 	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/anchor"
+	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/form"
 	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/header"
-	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/login"
-	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/title"
+	_ "github.com/samtholiya/analyserService/internal/service/analyser/html/plugin/info"
 )
 
 func traverse(waitGroup *sync.WaitGroup, node *html.Node, freshProcessors []plugin.ProcessorInterface) {
