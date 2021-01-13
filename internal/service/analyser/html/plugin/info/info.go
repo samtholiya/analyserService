@@ -1,4 +1,4 @@
-package title
+package info
 
 import (
 	"github.com/samtholiya/analyserService/internal/service/analyser/html/plugin"
@@ -6,7 +6,7 @@ import (
 	htmlNative "golang.org/x/net/html"
 )
 
-const name = "Title"
+const name = "Info"
 
 func init() {
 	plugin.RegisterProcessor(name, New)
@@ -22,10 +22,6 @@ func New(url string) plugin.ProcessorInterface {
 
 type Processor struct {
 	Title string
-}
-
-func (p *Processor) MarshalJSON() ([]byte, error) {
-	return []byte("\"" + p.Title + "\""), nil
 }
 
 func (p *Processor) Execute(node *htmlNative.Node) {

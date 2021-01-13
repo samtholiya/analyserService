@@ -1,4 +1,4 @@
-package title
+package info
 
 import (
 	"strings"
@@ -54,17 +54,8 @@ func TestTitleExecuteNegative(t *testing.T) {
 }
 
 func TestGetPluginName(t *testing.T) {
-	processor := &Processor{}
-	if processor.GetProcessorName() != "Title" {
-		t.Errorf("Plugin name should be Title found %v", processor.GetProcessorName())
-	}
-}
-
-func TestGetPluginJSON(t *testing.T) {
-	processor := &Processor{
-		Title: "Title",
-	}
-	if data, err := processor.MarshalJSON(); err != nil || string(data) != "\"Title\"" {
-		t.Errorf("MarshalJSON should return \"Title\" found: %v", string(data))
+	processor := New("mockurl")
+	if processor.GetProcessorName() != "Info" {
+		t.Errorf("Plugin name should be Info found %v", processor.GetProcessorName())
 	}
 }
