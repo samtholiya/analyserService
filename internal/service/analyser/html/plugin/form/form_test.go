@@ -1,4 +1,4 @@
-package login
+package form
 
 import (
 	"strings"
@@ -42,7 +42,7 @@ func traverse(node *html.Node, processor *Processor) {
 	}
 }
 
-func TestTitleExecute(t *testing.T) {
+func TestLoginExecute(t *testing.T) {
 	processor := &Processor{}
 
 	node, _ := html.Parse(strings.NewReader(htm))
@@ -63,5 +63,12 @@ func TestTitleExecute(t *testing.T) {
 	traverse(node, processor)
 	if processor.HasLoginForm {
 		t.Errorf("Should not have login form Set:%v should be: %v", processor.HasLoginForm, false)
+	}
+}
+
+func TestGetPluginName(t *testing.T) {
+	processor := New("mockurl")
+	if processor.GetProcessorName() != "Form" {
+		t.Errorf("Plugin name should be Form found %v", processor.GetProcessorName())
 	}
 }

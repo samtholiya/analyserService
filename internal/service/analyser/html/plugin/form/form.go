@@ -1,4 +1,4 @@
-package login
+package form
 
 import (
 	"sync"
@@ -9,7 +9,7 @@ import (
 	htmlNative "golang.org/x/net/html"
 )
 
-const name = "Login"
+const name = "Form"
 
 func init() {
 	plugin.RegisterProcessor(name, New)
