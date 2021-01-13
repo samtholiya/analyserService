@@ -60,6 +60,7 @@ const htm2 = `<!DOCTYPE html>
     body content
 	<p>more content</p>
 	<a href="/images"></a>
+	<a></a>
 </body>
 </html>`
 
@@ -86,5 +87,12 @@ func TestAnchorInternalLink(t *testing.T) {
 
 	if processor.InaccessibleLinks != 0 {
 		t.Errorf("InaccessibleLinks is not set correctly Set:%v should be: %v", processor.InaccessibleLinks, 0)
+	}
+}
+
+func TestAnchorProcessName(t *testing.T) {
+	processor := New("http://")
+	if processor.GetProcessorName() != "Anchor" {
+		t.Errorf("Process name was incrorect found %v expected Anchor", processor.GetProcessorName())
 	}
 }
