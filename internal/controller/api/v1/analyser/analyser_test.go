@@ -74,6 +74,36 @@ func TestAnalyserPostNegative(t *testing.T) {
 		t.Errorf("StatusUnprocessableEntity test case failing with %v Expected: %v", result.StatusCode, http.StatusUnprocessableEntity)
 	}
 
+	requestStatusUnprocessableEntity = httptest.NewRequest("POST", "/api/v1/analyser/html", strings.NewReader(`
+	{"data": "hin"}
+	`))
+	recorder = httptest.NewRecorder()
+	analyser.Post(recorder, requestStatusUnprocessableEntity)
+	result = recorder.Result()
+	if result.StatusCode != http.StatusUnprocessableEntity {
+		t.Errorf("StatusUnprocessableEntity test case failing with %v Expected: %v", result.StatusCode, http.StatusUnprocessableEntity)
+	}
+
+	requestStatusBadRequest := httptest.NewRequest("POST", "/api/v1/analyser/html", strings.NewReader(`
+	{"data1": "hin"}
+	`))
+	recorder = httptest.NewRecorder()
+	analyser.Post(recorder, requestStatusBadRequest)
+	result = recorder.Result()
+	if result.StatusCode != http.StatusBadRequest {
+		t.Errorf("StatusBadRequest test case failing with %v Expected: %v", result.StatusCode, http.StatusBadRequest)
+	}
+
+	requestStatusSuccess := httptest.NewRequest("OPTIONS", "/api/v1/analyser/html", strings.NewReader(`
+	{"data1": "hin"}
+	`))
+	recorder = httptest.NewRecorder()
+	analyser.Post(recorder, requestStatusSuccess)
+	result = recorder.Result()
+	if result.StatusCode != 200 {
+		t.Errorf("StatusSuccess test case failing for OPTIONS with %v Expected: %v", result.StatusCode, http.StatusBadRequest)
+	}
+
 	mockCrawler.err = errors.New("hello world parse error")
 	requestStatusInternalServerError := httptest.NewRequest("POST", "/api/v1/analyser/html", strings.NewReader(`
 	{"data": "https://www.google.co.in"}
