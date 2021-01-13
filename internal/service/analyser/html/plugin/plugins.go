@@ -22,9 +22,6 @@ var (
 func RegisterProcessor(name string, processor ProcessorGenerator) {
 	processorsMu.Lock()
 	defer processorsMu.Unlock()
-	if Processors == nil {
-		panic("Processor: Register processor is nil")
-	}
 	if _, dup := Processors[name]; dup {
 		panic("Processor: Register called twice for processor " + name)
 	}
