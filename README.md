@@ -1,4 +1,4 @@
-# analyserService
+# analyserService [![Build Status](https://travis-ci.com/samtholiya/analyserService.svg?branch=main)](https://travis-ci.com/samtholiya/analyserService)
 
 ## Build
 
