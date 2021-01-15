@@ -23,8 +23,10 @@ jobs:
       before_script:
         - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.35.2
       script:
-        - go test -race -coverprofile c.out ./...
+        - go test -race -coverprofile coverage.out ./...
         - golangci-lint run
+      after_script:
+        - bash <(curl -s https://codecov.io/bash)
     - name: Dockerhub Deploy
       if: tag IS present
       stage: deploy
