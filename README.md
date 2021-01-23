@@ -9,7 +9,7 @@ go build  -o /go/bin/server github.com/samtholiya/analyserService/cmd/server
 
 ### Docker 
 ```
-docker pull samtholiya/analyse-service:latest
+docker pull samtholiya/analyser-service:latest
 ```
 
 ## Run
@@ -20,6 +20,6 @@ docker pull samtholiya/analyse-service:latest
 ```
 ### Docker
 ```
-docker run -it samtholiya/analyse-service:latest
+docker run -it samtholiya/analyser-service:latest
 ```
 
